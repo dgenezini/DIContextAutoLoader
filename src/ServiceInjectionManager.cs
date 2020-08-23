@@ -1,5 +1,4 @@
 ﻿using DIContextAutoLoader.Attributes;
-using DIContextAutoLoader.Interfaces;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -18,8 +17,8 @@ namespace DIContextAutoLoader
             {
                 var Implementations = Assembly
                     .GetTypes()
-                    .Where(a => a.GetCustomAttributes<ConfigureInjectionAttribute>().Any() ||
-                                typeof(IAutoLoadableService).IsAssignableFrom(a) && a.IsClass)
+                    .Where(a => a.GetCustomAttributes<ConfigureInjectionAttribute>().Any() &&
+                                a.IsClass)
                     .ToList();
 
                 foreach (var Implementation in Implementations)
@@ -33,7 +32,6 @@ namespace DIContextAutoLoader
                         .InjectionType;
 
                     var Interfaces = Implementation.GetInterfaces()
-                        .Where(a => a != typeof(IAutoLoadableService))
                         .ToArray();
 
                     if ((InjectionType == InjectionType.ByBoth) ||
