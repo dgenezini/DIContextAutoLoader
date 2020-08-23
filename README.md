@@ -1,35 +1,68 @@
-# Elmah.Contrib.WebApi.Demystifier
+# DIContextAutoLoader 
 
 [![NuGet version (DIContextAutoLoader)](https://img.shields.io/nuget/v/DIContextAutoLoader.svg?style=flat-square)](https://www.nuget.org/packages/DIContextAutoLoader/)
 
-<!--
-ElmahExceptionLogger for WebAPI using [Ben.Demystifier](https://github.com/benaadams/Ben.Demystifier) for high performance understanding for stack traces
+A simple auto loader that scans for service classes and configure in the dependency injection provider.
 
-For more information about Ben.Demystifier: https://github.com/benaadams/Ben.Demystifier
-
-# Package Manager
+# Core Package
 
 ```
-    Install-Package Elmah.Contrib.WebApi.Demystifier
+    Install-Package DIContextAutoLoader
 ```
 
 # Usage
+
+Annotate your services with the ConfigureInjection attribute:
+
 ```csharp
-public static class WebApiConfig
+[ConfigureInjection]
+public class ServiceOne
 {
-    public static void Register(HttpConfiguration config)
-    {
-        config.Services.Add(typeof(IExceptionLogger), new ElmahDemystifierExceptionLogger());
+    ...
+}
+```
+
+Optionally you can specify the lifetime. (Default is Scoped.)
+
+```csharp
+[ConfigureInjection(Lifetime = InjectionLifetime.Singleton)]
+public class ServiceOne
+{
+    ...
+}
+```
+
+You can also specify the InjectionType. (Default is Auto.)
+
++ Auto = If the class implement interfaces, DI configuration will be done by them. If not, it will be done by the implementation type;
++ ByImplementationType = DI configuration will be done by implementation type;
++ ByServiceType = DI configuration will be done by service/interface types;
++ ByBoth = DI configuration will be done by service/interface types and by implementation type.
+
+```csharp
+[ConfigureInjection(Lifetime = InjectionLifetime.Transient, InjectionType = InjectionType.ByServiceType)]
+public class ServiceTwo: ISomeService
+{
+    ...
+}
+```
+
+# DI Extensions
+
++ [Microsoft.Extensions.DependencyInjection](https://github.com/dgenezini/DIContextAutoLoader.Microsoft.Extensions.DependencyInjection)
++ [Ninject](https://github.com/dgenezini/DIContextAutoLoader.Ninject)
+
+# Usage
+
+```csharp
+public class Startup
+{
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AutoLoadServices(typeof(SomeTypeInAssembly).Assembly);
  
         ...
     }
 }
 ```
 
-# Acknowledgements
-Just a copy of [elmah-contrib-webapi](https://github.com/rdingwall/elmah-contrib-webapi)'s [ElmahExceptionLogger](https://github.com/rdingwall/elmah-contrib-webapi/blob/master/src/Elmah.Contrib.WebApi/ElmahExceptionLogger.cs) using [Ben.Demystifier](https://github.com/benaadams/Ben.Demystifier)
-
-# License
-
-As a derivative work of elmah-contrib-webapi, this library is available under the same [MS-PL license](http://www.opensource.org/licenses/ms-pl).
--->
