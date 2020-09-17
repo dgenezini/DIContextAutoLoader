@@ -7,6 +7,11 @@ namespace DIContextAutoLoader
 {
     public static class ServiceInjectionManager
     {
+        /// <summary>
+        /// Scan assemblies for classes with <strong>ConfigureInjectionAttribute</strong>
+        /// </summary>
+        /// <param name="assemblies">Assemblies to scan for classes</param>
+        /// <returns>A collection of <strong>ServiceInjectionConfigurarion</strong> with <em>Lifetime</em>, <em>ServiceType</em> and <em>ImplementationType</em></returns>
         public static IEnumerable<ServiceInjectionConfigurarion>
             GetServicesInjectionConfigurarions(params Assembly[] assemblies)
         {
