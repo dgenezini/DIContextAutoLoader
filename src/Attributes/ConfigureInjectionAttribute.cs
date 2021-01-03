@@ -14,11 +14,11 @@ namespace DIContextAutoLoader
         /// <summary>
         /// Lifetime of injected service. Default = Scoped
         /// </summary>
-        public InjectionLifetime Lifetime { get; set; } = InjectionLifetime.Scoped;
+        public InjectionLifetime Lifetime { get; set; } = ServiceInjectionManager.DefaultLifetime;
 
         /// <summary>
         /// Sets if the service will be injected by interface or implementation. Default = Auto
         /// </summary>
-        public InjectionType InjectionType { get; set; } = InjectionType.Auto;
+        public InjectionType InjectionType { get; set; } = ServiceInjectionManager.DefaultInjectionType;
     }
 }

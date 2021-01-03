@@ -5,14 +5,9 @@ VisualStudioVersion = 16.0.30413.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DIContextAutoLoader", "DIContextAutoLoader.csproj", "{9A7992E3-8B69-4036-8411-FAA17C7C90CC}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".Nuget", ".Nuget", "{1E695383-2867-4621-9EB5-F395AFB37CE9}"
-	ProjectSection(SolutionItems) = preProject
-		..\.nuget\DIContextAutoLoader.nuspec = ..\.nuget\DIContextAutoLoader.nuspec
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DIContextAutoLoader.Tests", "..\DIContextAutoLoader.Tests\DIContextAutoLoader.Tests.csproj", "{1705CAF6-E4C7-4B7F-81F1-2E7E38C9A820}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DIContextAutoLoader.Tests.InvalidImplementarions", "..\DIContextAutoLoader.Tests.InvalidImplementarions\DIContextAutoLoader.Tests.InvalidImplementarions.csproj", "{F9905EC5-4006-4A73-B52B-36A475A1180B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DIContextAutoLoader.Tests.InvalidImplementarions", "..\DIContextAutoLoader.Tests.InvalidImplementarions\DIContextAutoLoader.Tests.InvalidImplementarions.csproj", "{F9905EC5-4006-4A73-B52B-36A475A1180B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -8,6 +8,16 @@ namespace DIContextAutoLoader
     public static class ServiceInjectionManager
     {
         /// <summary>
+        /// Sets the default value for ConfigureInjectionAttribute Lifetime. Default = Scoped
+        /// </summary>
+        public static InjectionLifetime DefaultLifetime { get; set; } = InjectionLifetime.Scoped;
+
+        /// <summary>
+        /// Sets the default value for ConfigureInjectionAttribute InjectionType. Default = Auto
+        /// </summary>
+        public static InjectionType DefaultInjectionType { get; set; } = InjectionType.Auto;
+
+        /// <summary>
         /// Scan assemblies for classes with <strong>ConfigureInjectionAttribute</strong>
         /// </summary>
         /// <param name="assemblies">Assemblies to scan for classes</param>
